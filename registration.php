@@ -13,11 +13,11 @@
     $mail->isSMTP();
 
 
-    function SendOTP($otp, $mail){
+    function SendOTP($otp, $email, $mail){
        // Mail 
 
        $mail->setFrom("helloworld.hello1world@gmail.com", "Hello World");
-       $mail->addAddress($mail);
+       $mail->addAddress($email);
        $mail->addReplyTo("helloworld.helloworld@gmail.com");
 
        $mail->isHTML(true);
@@ -26,7 +26,7 @@
        $mail->Body = "
             <p>Click this link to verify Email</p>
             <a href='http://localhost/demo1/PHP_Program/verify_registration.php'> Verify </a>
-            "
+            ";
     }
 
     if(isset($_POST['submit'])){
@@ -66,9 +66,9 @@
             exit();
         }
 
-        if(mysqli_query("insert into vehicleregister values('$email', $phone, $otp, '$name', '$father_name', '$mother_name')")){
+        if(mysqli_query($con, "insert into vehicleregister values('$email', $phone, $otp, '$candidate_name', '$father_name', '$mother_name')")){
             echo "Inserted Successfully";
-            SendOTP($otp, $email);
+            SendOTP($otp, $email, $mail);
         }
         
         mysqli_close($con);

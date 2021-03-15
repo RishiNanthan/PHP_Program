@@ -9,9 +9,25 @@
     $mail->SMTPAuth = true;
     $mail->SMTPSecure = "tls";
     $mail->Username = "helloworld.hello1world@gmail.com";
-    $mail->Password = "*****";
+    $mail->Password = "HelloWorld12345";
     $mail->isSMTP();
 
+
+    function SendOTP($otp, $mail){
+       // Mail 
+
+       $mail->setFrom("helloworld.hello1world@gmail.com", "Hello World");
+       $mail->addAddress($mail);
+       $mail->addReplyTo("helloworld.helloworld@gmail.com");
+
+       $mail->isHTML(true);
+       $mail->Subject = "Check";
+
+       $mail->Body = "
+            <p>Click this link to verify Email</p>
+            <a href='http://localhost/demo1/PHP_Program/verify_registration.php'> Verify </a>
+            "
+    }
 
     if(isset($_POST['submit'])){
         $email = $_POST['email'];
@@ -27,51 +43,35 @@
         $religion = $_POST['religion'];
         $community = $_POST['community'];
         $caste = $_POST['caste'];
+
+        $otp = rand(1000, 9999);
         // $gender = $_POST['gender'];
         // $dob = $_POST['dob'];
 
-        // Mail 
-
-        $mail->setFrom("helloworld.hello1world@gmail.com", "Hello World");
-        $mail->addAddress("rishinanthan344@gmail.com");
-        $mail->addReplyTo("helloworld.helloworld@gmail.com");
-
-        $mail->isHTML(true);
-        $mail->Subject = "Check";
-
-        $mail->Body = "Hi hello";
 
         if(!$mail->send()){
             echo "Message could not be send";
         }
         else{
-            echo "Message send successfully";
+            echo "Message send successfully. Check your mail to verify";
         }
 
 
-        /*
-        $con = mysqli_connect("localhost", "rishi", "rishi", "sample");
+        
+        $con = mysqli_connect("localhost", "root", "", "sample");
 
         if (mysqli_connect_errno()) {
 
             printf("connection failed: %s\n", mysqli_connect_error());
             exit();
         }
-        
-        $query = "SELECT * from student";
-        
-        $res = mysqli_query($con, $query);
-        
-        if ($res) {
-        
-            $row = mysqli_fetch_row($res);
-            echo $row[0];
+
+        if(mysqli_query("insert into vehicleregister values('$email', $phone, $otp, '$name', '$father_name', '$mother_name')")){
+            echo "Inserted Successfully";
+            SendOTP($otp, $email);
         }
         
-        mysqli_free_result($res);
         mysqli_close($con);
-        */
-
 
 
     }

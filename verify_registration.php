@@ -1,5 +1,6 @@
 <?php
 
-    if(isset($_POST['submit']))
+    $otp = $_GET['otp'];
+    echo $otp;
 
 ?>

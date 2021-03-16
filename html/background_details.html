@@ -1,0 +1,161 @@
+
+<html>
+    <head>
+        <title>Heavy Vehicle Driver Training Course Registration Form</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet" />
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div class="page-header">
+                <br />
+                <h1>Heavy Vehicle Driver Training Course</h1>
+                <br />
+            </div>
+
+            <form action="registration.php" method="POST" class="container">
+
+                <div class="shadow-lg p-3 mb-5 bg-white rounded">
+                    <label>Educational Qualification</label>
+                    <div class="container">
+
+                        <div class="row">
+                            <div class="col col-4"></div>
+                            <div class="col col-4">Pass</div>
+                            <div class="col col-4">Fail</div>
+                        </div>
+
+                        <div class="border row">
+                            <div class="col col-4">
+                                8th
+                            </div>
+                            <div class="col col-4">
+                                <input type="radio" name="8th" value="pass" style="margin-top: 5px;" />
+                            </div>
+                            <div class="col col-4">
+                                <input type="radio" name="8th" value="fail" style="margin-top: 5px;" />
+                            </div>
+                        </div>
+                        
+                        <div class="border row">
+                            <div class="col col-4">
+                                10th
+                            </div>
+                            <div class="col col-4">
+                                <input type="radio" name="10th" value="pass" style="margin-top: 5px;" />
+                            </div>
+                            <div class="col col-4">
+                                <input type="radio" name="10th" value="fail" style="margin-top: 5px;" />
+                            </div>
+                        </div>
+
+                        <div class="border row">
+                            <div class="col col-4">
+                                Diplomo
+                            </div>
+                            <div class="col col-4">
+                                <input type="radio" name="diplomo" value="pass" style="margin-top: 5px;" />
+                            </div>
+                            <div class="col col-4">
+                                <input type="radio" name="diplomo" value="fail" style="margin-top: 5px;" />
+                            </div>
+                        </div>
+
+                        <div class="border row">
+                            <div class="col col-4">
+                                Degree
+                            </div>
+                            <div class="col col-4 radio">
+                                <input type="radio" name="degree" value="pass" style="margin-top: 5px;" />
+                            </div>
+                            <div class="col col-4 radio">
+                                <input type="radio" name="degree" value="fail" style="margin-top: 5px;" />
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                                
+                <div class="shadow-lg p-3 mb-5 bg-white rounded">
+                    <label>Language of study in tamil?</label>
+                    
+                    <div class="radio">
+                        <label><input type="radio" name="tamil_language" class="form-check-inline" > Yes </label>
+                    </div>
+                    <div class="radio">
+                        <label><input type="radio" name="tamil_language" class="form-check-inline"> No </label>
+                    </div>
+                    
+                </div>
+
+                <div class="shadow-lg p-3 mb-5 bg-white rounded">
+                    <label class="left">Height (உயரம்) in cm</label>
+                    <input class="form-control" placeholder="Height" type="text" id="height" name="height" />
+                </div>
+
+                <div class="shadow-lg p-3 mb-5 bg-white rounded">
+                    <label class="left">Weight (எடை) in kg</label>
+                    <input class="form-control" placeholder="Weight" type="text" id="weight" name="weight" />
+                </div>
+
+                <div class="shadow-lg p-3 mb-5 bg-white rounded">
+                    <label class="left">LMV Driving Licence Number (ஓட்டுநர் உரிமம் எண்)</label>
+                    <input class="form-control" placeholder="Licence Number" type="text" id="licence_number" name="licence_number" />
+                </div>
+                
+                <div class="shadow-lg p-3 mb-5 bg-white rounded">
+                    <label class="left">LMV Issue Date (LMV எடுத்த நாள்)</label>
+                    <input class="form-control" type="date" id="licence_issue_date" name="licence_issue_date" />
+                </div>
+                         
+                <div class="shadow-lg p-3 mb-5 bg-white rounded">
+                    <label class="left">Licence Valid upto (ஓட்டுனர் உரிமம் செல்லுபடி ஆகும் நாள்)</label>
+                    <input class="form-control" type="date" id="licence_expire_date" name="licence_expire_date" />
+                </div>
+                
+                <div class="shadow-lg p-3 mb-5 bg-white rounded">
+                    <label class="left">PSV BADGE எண்</label>
+                    <input class="form-control" placeholder="Badge Number" type="text" id="badge_number" name="badge_number" />
+                </div>
+                                
+                <div class="shadow-lg p-3 mb-5 bg-white rounded">
+                    <label class="left">PSV BADGE எடுத்த நாள்</label>
+                    <input class="form-control" type="date" id="badge_issue_date" name="badge_issue_date" />
+                </div>
+
+                <div class="shadow-lg p-3 mb-5 bg-white rounded">
+                    <label class="left">PSV Taken in the region of (PSV எடுக்கப்பட்ட இடம்)</label>
+                    <input class="form-control" placeholder="PSV region" type="text" id="psv_region" name="psv_region" />
+                </div>                
+                                
+                <div class="shadow-lg p-3 mb-5 bg-white rounded">
+                    <label class="left">HPTV issue date</label>
+                    <input class="form-control" type="date" id="hptv_issue_date" name="hptv_issue_date" />
+                </div>
+                
+                <div class="shadow-lg p-3 mb-5 bg-white rounded">
+                    <label>
+                        Bank Passbook details(வங்கி பாஸ்புக் விவரங்கள்)<br /> 
+                        <small>1. Name of the Candidate 2. Account Number 3. Bank Name 4. Branch Name 5. IFSC Code</small> 
+                    </label>
+                    <input class="form-control" type="text" id="passbook_details" name="passbook_details" />
+                </div>
+                                
+                <div class="shadow-lg p-3 mb-5 bg-white rounded">
+                    <label>Any free course undertaken from TNSTC</label>
+                    <div class="radio">
+                        <label><input type="radio" name="free_courses" class="form-check-inline" > Yes</label>
+                    </div>
+                    <div class="radio">
+                        <label><input type="radio" name="free_courses" class="form-check-inline" > No</label>
+                    </div>
+                </div>
+
+                <input type="submit" class="btn btn-primary" value="Register" name="submit" />
+                <br />
+            </form>
+            
+        </div>
+    </body>
+</html>

@@ -3,19 +3,19 @@
 
     require 'mailer/PHPMailerAutoload.php';
 
-    $mail = new PHPMailer();
-    $mail->Host = "smtp.gmail.com";
-    $mail->Port = 587;
-    $mail->SMTPAuth = true;
-    $mail->SMTPSecure = "tls";
-    $mail->Username = "helloworld.hello1world@gmail.com";
-    $mail->Password = "******";
-    $mail->isSMTP();
 
 
-    function SendOTP($otp, $email, $mail){
+    function SendOTP($otp, $email){
        // Mail 
-
+       $mail = new PHPMailer();
+       $mail->Host = "smtp.gmail.com";
+       $mail->Port = 587;
+       $mail->SMTPAuth = true;
+       $mail->SMTPSecure = "tls";
+       $mail->Username = "helloworld.hello1world@gmail.com";
+       $mail->Password = "****";
+       $mail->isSMTP();
+   
        $mail->setFrom("helloworld.hello1world@gmail.com", "Hello World");
        $mail->addAddress($email);
        $mail->addReplyTo("helloworld.helloworld@gmail.com");
@@ -24,9 +24,17 @@
        $mail->Subject = "Check";
 
        $mail->Body = "
-            <p>Click this link to verify Email</p>
-            <a href='http://localhost/demo1/PHP_Program/verify_registration.php'> Verify </a>
+            <h1>Click this link to verify Email</h1>
+            <a href='http://localhost/mailOTP/verify_registration.php?otp=$otp&email=$email'> Verify </a>
             ";
+
+        if(!$mail->send()){
+            echo "Message could not be send";
+        }
+        else{
+            echo "Message send successfully. Check your mail to verify";
+        }
+    
     }
 
     if(isset($_POST['submit'])){
@@ -43,36 +51,29 @@
         $religion = $_POST['religion'];
         $community = $_POST['community'];
         $caste = $_POST['caste'];
-
-        $otp = rand(1000, 9999);
         // $gender = $_POST['gender'];
         // $dob = $_POST['dob'];
 
+        $otp = rand(1000, 9999);
 
-        if(!$mail->send()){
-            echo "Message could not be send";
-        }
-        else{
-            echo "Message send successfully. Check your mail to verify";
-        }
-
-
-        
         $con = mysqli_connect("localhost", "root", "", "sample");
 
         if (mysqli_connect_errno()) {
 
-            printf("connection failed: %s\n", mysqli_connect_error());
+            echo "connection failed:" ;
+            echo mysqli_connect_error();
             exit();
         }
 
-        if(mysqli_query($con, "insert into vehicleregister values('$email', $phone, $otp, '$candidate_name', '$father_name', '$mother_name')")){
+        if(mysqli_query($con, "insert into verifyregister values('$email', $phone, $otp, '$candidate_name', '$father_name', '$mother_name')")){
             echo "Inserted Successfully";
-            SendOTP($otp, $email, $mail);
+            SendOTP($otp, $email);
+        }
+        else{
+            echo mysqli_error($con);
         }
         
         mysqli_close($con);
-
 
     }
     else{

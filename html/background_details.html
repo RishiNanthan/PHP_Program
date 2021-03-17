@@ -14,7 +14,13 @@
                 <br />
             </div>
 
-            <form action="registration.php" method="POST" class="container">
+            <form action="background_details.php" method="POST" class="container">
+
+                <div class="shadow-lg p-3 mb-5 bg-white rounded">
+                    <label class="left">Email OTP</label><br />
+                    <small> Enter the OTP sent to your email </small>
+                    <input class="form-control" placeholder="Email OTP" type="number" id="otp" name="otp" />
+                </div>
 
                 <div class="shadow-lg p-3 mb-5 bg-white rounded">
                     <label>Educational Qualification</label>
@@ -81,10 +87,10 @@
                     <label>Language of study in tamil?</label>
                     
                     <div class="radio">
-                        <label><input type="radio" name="tamil_language" class="form-check-inline" > Yes </label>
+                        <label><input type="radio" name="tamil_medium" value="yes" class="form-check-inline" > Yes </label>
                     </div>
                     <div class="radio">
-                        <label><input type="radio" name="tamil_language" class="form-check-inline"> No </label>
+                        <label><input type="radio" name="tamil_medium" value="no" class="form-check-inline"> No </label>
                     </div>
                     
                 </div>
@@ -152,7 +158,10 @@
                     </div>
                 </div>
 
-                <input type="submit" class="btn btn-primary" value="Register" name="submit" />
+                <div>
+                    <input type="submit" class="btn btn-dark" value="Save & Next" name="submit" />
+                </div>
+
                 <br />
             </form>
             

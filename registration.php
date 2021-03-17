@@ -2,78 +2,62 @@
 <?php
 
     require 'mailer/PHPMailerAutoload.php';
+    session_start();
 
-
-
-    function SendOTP($otp, $email){
+    $_SESSION['otp_verification'] = false;
+ 
+    function SendOTP(){
        // Mail 
-       $mail = new PHPMailer();
-       $mail->Host = "smtp.gmail.com";
-       $mail->Port = 587;
-       $mail->SMTPAuth = true;
-       $mail->SMTPSecure = "tls";
-       $mail->Username = "helloworld.hello1world@gmail.com";
-       $mail->Password = "****";
-       $mail->isSMTP();
-   
-       $mail->setFrom("helloworld.hello1world@gmail.com", "Hello World");
-       $mail->addAddress($email);
-       $mail->addReplyTo("helloworld.helloworld@gmail.com");
-
-       $mail->isHTML(true);
-       $mail->Subject = "Check";
-
-       $mail->Body = "
-            <h1>Click this link to verify Email</h1>
-            <a href='http://localhost/mailOTP/verify_registration.php?otp=$otp&email=$email'> Verify </a>
-            ";
-
-        if(!$mail->send()){
-            echo "Message could not be send";
-        }
-        else{
-            echo "Message send successfully. Check your mail to verify";
-        }
+        $mail = new PHPMailer();
+        $mail->SMTPDebug = 3;
+        $mail->Host = "smtp.gmail.com";
+        $mail->Port = 587;
+        $mail->SMTPAuth = true;
+        $mail->SMTPSecure = "tls";
+        $mail->Username = "helloworld.hello1world@gmail.com";
+        $mail->Password = "*****";
+        $mail->isSMTP();
     
+        $mail->setFrom("helloworld.hello1world@gmail.com", "Hello World");
+        $mail->addAddress($_SESSION['email']);
+        $mail->addReplyTo("helloworld.helloworld@gmail.com");
+
+        $mail->isHTML(true);
+        $mail->Subject = "Check";
+
+        $otp = $_SESSION['otp'];
+        $mail->Body = " <h1> Your One Time Password (OTP) is $otp </h1> ";
+        $res = $mail->send();
+        echo $mail->ErrorInfo;
+        return $res;
     }
 
+
     if(isset($_POST['submit'])){
-        $email = $_POST['email'];
-        $center = $_POST['center'];
-        $district = $_POST['district'];
-        $candidate_name = $_POST['candidate_name'];
-        $father_name = $_POST['father_name'];
-        $mother_name = $_POST['mother_name'];
-        $address = $_POST['address'];
-        $phone = $_POST['phone'];
-        $ration_number = $_POST['ration_number'];
-        $aadhaar_number = $_POST['aadhaar_number'];
-        $religion = $_POST['religion'];
-        $community = $_POST['community'];
-        $caste = $_POST['caste'];
-        // $gender = $_POST['gender'];
-        // $dob = $_POST['dob'];
 
-        $otp = rand(1000, 9999);
+        $_SESSION['email'] = $_POST['email'];
+        $_SESSION['center'] = $_POST['center'];
+        $_SESSION['district'] = $_POST['district'];
+        $_SESSION['candidate_name'] = $_POST['candidate_name'];
+        $_SESSION['father_name'] = $_POST['father_name'];
+        $_SESSION['mother_name'] = $_POST['mother_name'];
+        $_SESSION['address'] = $_POST['address'];
+        $_SESSION['phone'] = $_POST['phone'];
+        $_SESSION['ration_number'] = $_POST['ration_number'];
+        $_SESSION['aadhaar_number'] = $_POST['aadhaar_number'];
+        $_SESSION['religion'] = $_POST['religion'];
+        $_SESSION['community'] = $_POST['community'];
+        $_SESSION['caste'] = $_POST['caste'];
+        $_SESSION['gender'] = $_POST['gender'];
+        $_SESSION['dob'] = $_POST['dob'];
 
-        $con = mysqli_connect("localhost", "root", "", "sample");
-
-        if (mysqli_connect_errno()) {
-
-            echo "connection failed:" ;
-            echo mysqli_connect_error();
-            exit();
-        }
-
-        if(mysqli_query($con, "insert into verifyregister values('$email', $phone, $otp, '$candidate_name', '$father_name', '$mother_name')")){
-            echo "Inserted Successfully";
-            SendOTP($otp, $email);
-        }
+        $_SESSION['otp'] = rand(1000, 9999);
+        if(SendOTP()){
+            header('Location: /mailOTP/background_details.php');
+        }    
         else{
-            echo mysqli_error($con);
+            echo "Unable to send mail";
         }
-        
-        mysqli_close($con);
 
     }
     else{

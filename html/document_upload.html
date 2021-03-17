@@ -1,0 +1,59 @@
+<html>
+    <head>
+        <link href="css/bootstrap.min.css" rel="stylesheet" />
+        <title>Heavy Vehicle Driver Training Course Registration</title>
+    </head>
+
+    <body>
+
+        <div class="container">
+            <div class="page-header">
+                <br />
+                <h1>Heavy Vehicle Driver Training Course Form</h1>
+                <br />
+            </div>
+
+            <form class="form" enctype="multipart/form-data" action="/mailOTP/document_upload.php" method="POST">
+
+                <div class="shadow-lg p-3 mb-5 bg-white rounded">
+                    <label>Photograph</label>
+                    <input type="file" id="photograph" name="photograph" class="form-control" />
+                </div>
+
+                <div class="shadow-lg p-3 mb-5 bg-white rounded">
+                    <label>Transfer Certificate</label>
+                    <input type="file" id="transfer_certificate" name="transfer_certificate" class="form-control" />
+                </div>
+
+                <div class="shadow-lg p-3 mb-5 bg-white rounded">
+                    <label>Educational Certificate</label>
+                    <input type="file" id="educational_certificate" name="educational_certificate" class="form-control" />
+                </div>
+
+                <div class="shadow-lg p-3 mb-5 bg-white rounded">
+                    <label>Aadhaar Card</label>
+                    <input type="file" id="aadhaar_card" name="aadhaar_card" class="form-control" />
+                </div>
+
+                <div class="shadow-lg p-3 mb-5 bg-white rounded">
+                    <label>Driving License</label>
+                    <input type="file" id="driving_license" name="driving_license" class="form-control" />
+                </div>
+
+                <div class="shadow-lg p-3 mb-5 bg-white rounded">
+                    <label>Community Certificate</label>
+                    <input type="file" id="community_certificate" name="community_certificate" class="form-control" />
+                </div>
+
+                <div>
+                    <input type="submit" value="Submit" class="btn btn-dark" name="submit" />
+                </div>
+
+                <br />
+                <br />
+
+            </form>
+        </div>
+
+    </body>
+</html>

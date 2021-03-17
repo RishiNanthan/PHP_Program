@@ -19,62 +19,62 @@
             
                 <div class="shadow-lg p-3 mb-5 bg-white rounded">
                     <label> Email address </label>
-                    <input type="email" id="email" name="email" class="form-control" placeholder="Email" />
+                    <input type="email" id="email" name="email" class="form-control" placeholder="Email" required /><br />
                 </div>
 
                 <div class="shadow-lg p-3 mb-5 bg-white rounded">
                     <label>Name of the Center (பயிற்சி பெற விரும்பும் மையத்தின் பெயர்)</label>
-                    <input class="form-control" type="text" id="center" name="center" placeholder="Center" />
+                    <input class="form-control" type="text" id="center" name="center" placeholder="Center" required />
                 </div>
                 
                 <div class="shadow-lg p-3 mb-5 bg-white rounded">
                     <label>Name of the District (மாவட்டத்தின் பெயர்)</label>
-                    <input class="form-control" placeholder="District" type="text" id="district" name="district" />
+                    <input class="form-control" placeholder="District" type="text" id="district" name="district" required />
                 </div>
                 
                 <div class="shadow-lg p-3 mb-5 bg-white rounded">
                     <label>Name of the Candidate (பெயர்)</label>
-                    <input class="form-control" placeholder="Name" type="text" id="candidate_name" name="candidate_name" />
+                    <input class="form-control" placeholder="Name" type="text" id="candidate_name" name="candidate_name" required />
                 </div>
                 
                 <div class="shadow-lg p-3 mb-5 bg-white rounded">
                     <label>Father's Name (தந்தை பெயர்)</label>
-                    <input class="form-control" placeholder="Father's Name" type="text" id="father_name" name="father_name" />
+                    <input class="form-control" placeholder="Father's Name" type="text" id="father_name" name="father_name" required />
                 </div>
                 
                 <div class="shadow-lg p-3 mb-5 bg-white rounded">
                     <label>Mother's Name (தாய் பெயர்)</label>
-                    <input class="form-control" placeholder="Mother's Name" type="text" id="mother_name" name="mother_name" />
+                    <input class="form-control" placeholder="Mother's Name" type="text" id="mother_name" name="mother_name" required />
                 </div>
                 
                 <div class="shadow-lg p-3 mb-5 bg-white rounded">
                     <label>Residential Address ( வீட்டு முகவரி)</label>
-                    <input class="form-control" placeholder="Address" type="text" id="address" name="address" />
+                    <input class="form-control" placeholder="Address" type="text" id="address" name="address" required />
                 </div>
 
                 <div class="shadow-lg p-3 mb-5 bg-white rounded">
                     <label>Contact Phone No (தொடர்பு தொலைபேசி எண்)</label>
-                    <input class="form-control" placeholder="Phone" type="number" id="phone" name="phone" />
+                    <input class="form-control" placeholder="Phone" type="number" id="phone" name="phone" required />
                 </div>
                 
                 <div class="shadow-lg p-3 mb-5 bg-white rounded">
                     <label>Ration Card Number (குடும்ப அட்டை எண்)</label>
-                    <input class="form-control" placeholder="Ration Card Number" type="text" id="ration_number" name="ration_number" />
+                    <input class="form-control" placeholder="Ration Card Number" type="text" id="ration_number" name="ration_number" required />
                 </div>
                 
                 <div class="shadow-lg p-3 mb-5 bg-white rounded">
                     <label>Aadhaar No (ஆதார் எண்)</label>
-                    <input class="form-control" placeholder="Aadhaar Number" type="text" id="aadhaar_number" name="aadhaar_number" />
+                    <input class="form-control" placeholder="Aadhaar Number" type="text" id="aadhaar_number" name="aadhaar_number" required />
                 </div>
                 
                 <div class="shadow-lg p-3 mb-5 bg-white rounded">
                     <label>Religion (மதம்) (Hindu, Muslim, Christian,Parsi,Jain)</label>
-                    <input class="form-control" placeholder="Religion" type="text" id="religion" name="religion" />
+                    <input class="form-control" placeholder="Religion" type="text" id="religion" name="religion" required />
                 </div>
 
                 <div class="shadow-lg p-3 mb-5 bg-white rounded">
                     <label>Community</label>
-                    <select name="community" id="commmunity" class="form-control">
+                    <select name="community" id="commmunity" class="form-control" required>
                         <option value="OC">OC</option>
                         <option value="BC">BC</option>
                         <option value="MBC">MBC</option>
@@ -88,13 +88,13 @@
 
                 <div class="shadow-lg p-3 mb-5 bg-white rounded">
                     <label>Caste (சாதி)</label>
-                    <input class="form-control" placeholder="Caste" type="text" id="caste" name="caste" />
+                    <input class="form-control" placeholder="Caste" type="text" id="caste" name="caste" required />
                 </div>
 
                 <div class="shadow-lg p-3 mb-5 bg-white rounded">
                     <label>Gender (பாலினம்)</label>
                     <div>
-                        <input type="radio" id="male" name="gender" value="male" class="btn-check" />
+                        <input type="radio" id="male" name="gender" value="male" class="btn-check" checked />
                         <label> Male</label>
                         &nbsp;
                         <input type="radio" id="female" name="gender" value="female" class="btn-check" />
@@ -107,10 +107,10 @@
 
                 <div class="shadow-lg p-3 mb-5 bg-white rounded">
                     <label>Date Of Birth (பிறந்த தேதி) <br /> <small>Age Should be more than 20</small> </label>
-                    <input class="form-control" type="date" id="dob" name="dob" />
+                    <input class="form-control" type="date" id="dob" name="dob" required />
                 </div>
 
-                <input type="submit" class="btn btn-dark" value="Register" name="submit" />
+                <input type="submit" class="btn btn-dark" value="Save & Next" name="submit" />
                 <br /> <br />
             </form>
             

@@ -4,6 +4,14 @@
 require 'mailer/PHPMailerAutoload.php';
 session_start();
 
+if(!isset($_SESSION["otp_verification"])){
+    $_SESSION["otp_verification"] = false;
+}
+
+if(!isset($_SESSION['state'])){
+    $_SESSION["state"] = 0;
+}
+
 function SendOTP(){
     // Mail 
      $mail = new PHPMailer();
@@ -32,9 +40,9 @@ function SendOTP(){
      return $res;
  }
 
- $error = "";
- $state = 0; // 0 - get email, 1 - get otp
  $email = "";
+ $error = "";
+ 
 
  if(isset($_POST['submit'])){
      if(!isset($_POST['otp'])){
@@ -45,15 +53,30 @@ function SendOTP(){
              $error = "Mail cannot be send. Server problem. Retry again later.";
          }
          else{
-             $state = 1;
+             $_SESSION['state'] = 1;
          }
      }
      else{
          $otp = $_POST['otp'];
+         if($otp == $_SESSION['otp']){
+             $_SESSION["otp_verification"] = true;
+             echo "Verified";
+             header("Location: hvdt_registration.php");
+         } 
+         else{
+             $error = "Wrong OTP. Retry";
+         }
      }
  }
+ else{
+     $_SESSION["state"] = 0;
+ }
 
+ if($_SESSION["otp_verification"] == true){
+     header("Location: hvdt_registration.php");
+ }
 
+ $state = $_SESSION['state'];
 
 ?>
 

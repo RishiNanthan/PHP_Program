@@ -58,7 +58,6 @@
         else{
             echo "Unable to send mail";
         }
-
     }
     else{
         include('html/registration.html');

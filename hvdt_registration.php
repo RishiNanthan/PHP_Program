@@ -154,7 +154,7 @@ function store_files($files, $file_fields){
 
 
 $data_fields = array('phone', 'center', 'district', 'candidate_name', 'father_name', 'mother_name', 'address', 'ration_number', 'aadhaar_number',
-'religion', 'community', 'caste', 'gender', 'dob', '8th', '10th', 'diplomo', 'degree', 'tamil_medium', 'height', 'weight', 'license_number', 
+'religion', 'community', 'caste', 'gender', 'dob', '8th', '10th', 'diplomo', 'degree', 'tamil_medium', 'height', 'weight', 'license_number', 'license_issue_date',
 'license_expire_date', 'badge_number', 'badge_issue_date', 'psv_region', 'hptv_issue_date', 'passbook_details', 'free_courses');
 
 $file_fields = array('photograph', 'transfer_certificate', 'educational_certificate', 'aadhaar_card', 'driving_license', 'community_certificate');
@@ -232,55 +232,72 @@ if(isset($_POST['submit'])){
 
                 <div class="shadow-lg p-3 mb-5 bg-white rounded">
                     <label>Name of the Candidate (பெயர்)</label>
-                    <input class="form-control" placeholder="Name" type="text" id="candidate_name" name="candidate_name" required />
-                    
+                    <input class="form-control" placeholder="Name" type="text" id="candidate_name" name="candidate_name" 
+                    value="<?php echo $data['candidate_name']; ?>" required />
+                    <p class="text text-danger"><?php echo $data_error['candidate_name']; ?></p>
                 </div>
                 
                 <div class="shadow-lg p-3 mb-5 bg-white rounded">
                     <label>Father's Name (தந்தை பெயர்)</label>
-                    <input class="form-control" placeholder="Father's Name" type="text" id="father_name" name="father_name" required />
+                    <input class="form-control" placeholder="Father's Name" type="text" id="father_name" name="father_name"
+                    value="<?php echo $data['father_name']; ?>" required />
+                    <p class="text text-danger"><?php echo $data_error['father_name']; ?></p>
                 </div>
                 
                 <div class="shadow-lg p-3 mb-5 bg-white rounded">
                     <label>Mother's Name (தாய் பெயர்)</label>
-                    <input class="form-control" placeholder="Mother's Name" type="text" id="mother_name" name="mother_name" required />
+                    <input class="form-control" placeholder="Mother's Name" type="text" id="mother_name" name="mother_name"
+                    value="<?php echo $data['mother_name']; ?>" required />
+                    <p class="text text-danger"><?php echo $data_error['mother_name']; ?></p>
                 </div>
  
                 <div class="shadow-lg p-3 mb-5 bg-white rounded">
                     <label>Date Of Birth (பிறந்த தேதி) <br /> <small>Age Should be more than 20</small> </label>
-                    <input class="form-control" type="date" id="dob" name="dob" required />
+                    <input class="form-control" type="date" id="dob" name="dob"
+                    value="<?php echo $data['dob']; ?>" required />
                     <p class="text text-danger"><?php echo $data_error['dob']; ?></p>
                 </div>
 
                 <div class="shadow-lg p-3 mb-5 bg-white rounded">
                     <label>Residential Address ( வீட்டு முகவரி)</label>
-                    <input class="form-control" placeholder="Address" type="text" id="address" name="address" required />
+                    <input class="form-control" placeholder="Address" type="text" id="address" name="address"
+                    value="<?php echo $data['address']; ?>" required />
+                    <p class="text text-danger"><?php echo $data_error['address']; ?></p>
                 </div>
                 
                 <div class="shadow-lg p-3 mb-5 bg-white rounded">
                     <label>Name of the District (மாவட்டத்தின் பெயர்)</label>
-                    <input class="form-control" placeholder="District" type="text" id="district" name="district" required />
+                    <input class="form-control" placeholder="District" type="text" id="district" name="district"
+                    value="<?php echo $data['district']; ?>" required />
+                    <p class="text text-danger"><?php echo $data_error['district']; ?></p>
                 </div>
                 
                 <div class="shadow-lg p-3 mb-5 bg-white rounded">
                     <label>Contact Phone No (தொடர்பு தொலைபேசி எண்)</label>
-                    <input class="form-control" placeholder="Phone" type="number" id="phone" name="phone" required />
+                    <input class="form-control" placeholder="Phone" type="number" id="phone" name="phone"
+                    value="<?php echo $data['phone']; ?>" required />
                     <p class="text text-danger"><?php echo $data_error['phone']; ?></p>
                 </div>
                 
                 <div class="shadow-lg p-3 mb-5 bg-white rounded">
                     <label>Ration Card Number (குடும்ப அட்டை எண்)</label>
-                    <input class="form-control" placeholder="Ration Card Number" type="text" id="ration_number" name="ration_number" required />
+                    <input class="form-control" placeholder="Ration Card Number" type="text" id="ration_number" name="ration_number"
+                    value="<?php echo $data['ration_number']; ?>" required />
+                    <p class="text text-danger"><?php echo $data_error['ration_number']; ?></p>
                 </div>
                 
                 <div class="shadow-lg p-3 mb-5 bg-white rounded">
                     <label>Aadhaar No (ஆதார் எண்)</label>
-                    <input class="form-control" placeholder="Aadhaar Number" type="text" id="aadhaar_number" name="aadhaar_number" required />
+                    <input class="form-control" placeholder="Aadhaar Number" type="text" id="aadhaar_number" name="aadhaar_number"
+                    value="<?php echo $data['aadhaar_number']; ?>" required />
+                    <p class="text text-danger"><?php echo $data_error['aadhaar_number']; ?></p>
                 </div>
                 
                 <div class="shadow-lg p-3 mb-5 bg-white rounded">
                     <label>Religion (மதம்) (Hindu, Muslim, Christian,Parsi,Jain)</label>
-                    <input class="form-control" placeholder="Religion" type="text" id="religion" name="religion" required />
+                    <input class="form-control" placeholder="Religion" type="text" id="religion" name="religion"
+                    value="<?php echo $data['religion']; ?>" required />
+                    <p class="text text-danger"><?php echo $data_error['religion']; ?></p>
                 </div>
 
                 <div class="shadow-lg p-3 mb-5 bg-white rounded">
@@ -299,7 +316,9 @@ if(isset($_POST['submit'])){
 
                 <div class="shadow-lg p-3 mb-5 bg-white rounded">
                     <label>Caste (சாதி)</label>
-                    <input class="form-control" placeholder="Caste" type="text" id="caste" name="caste" required />
+                    <input class="form-control" placeholder="Caste" type="text" id="caste" name="caste"
+                    value="<?php echo $data['caste']; ?>" required />
+                    <p class="text text-danger"><?php echo $data_error['caste']; ?></p>
                 </div>
 
                 <div class="shadow-lg p-3 mb-5 bg-white rounded">
@@ -318,13 +337,15 @@ if(isset($_POST['submit'])){
 
                 <div class="shadow-lg p-3 mb-5 bg-white rounded">
                     <label class="left">Height (உயரம்) in cm</label>
-                    <input class="form-control" placeholder="Height" type="number" id="height" name="height" required />
+                    <input class="form-control" placeholder="Height" type="number" id="height" name="height"
+                    value="<?php echo $data['height']; ?>" required />
                     <p class="text text-danger"><?php echo $data_error['height']; ?></p>
                 </div>
 
                 <div class="shadow-lg p-3 mb-5 bg-white rounded">
                     <label class="left">Weight (எடை) in kg</label>
-                    <input class="form-control" placeholder="Weight" type="number" id="weight" name="weight" required />
+                    <input class="form-control" placeholder="Weight" type="number" id="weight" name="weight"
+                    value="<?php echo $data['weight']; ?>" required />
                     <p class="text text-danger"><?php echo $data_error['weight']; ?></p>
                 </div>
 
@@ -405,42 +426,58 @@ if(isset($_POST['submit'])){
 
                 <div class="shadow-lg p-3 mb-5 bg-white rounded">
                     <label>Name of the Center of choice (பயிற்சி பெற விரும்பும் மையத்தின் பெயர்)</label>
-                    <input class="form-control" type="text" id="center" name="center" placeholder="Center" required />
+                    <input class="form-control" type="text" id="center" name="center" placeholder="Center"
+                    value="<?php echo $data['center']; ?>" required />
+                    <p class="text text-danger"><?php echo $data_error['center']; ?></p>
                 </div>
 
                 <div class="shadow-lg p-3 mb-5 bg-white rounded">
                     <label class="left">LMV Driving Licence Number (ஓட்டுநர் உரிமம் எண்)</label>
-                    <input class="form-control" placeholder="Licence Number" type="text" id="license_number" name="license_number" required />
+                    <input class="form-control" placeholder="Licence Number" type="text" id="license_number" 
+                    value="<?php echo $data['license_number']; ?>"name="license_number" required />
+                    <p class="text text-danger"><?php echo $data_error['license_number']; ?></p>
                 </div>
                 
                 <div class="shadow-lg p-3 mb-5 bg-white rounded">
                     <label class="left">LMV Issue Date (LMV எடுத்த நாள்)</label>
-                    <input class="form-control" type="date" id="licence_issue_date" name="license_issue_date" required />
+                    <input class="form-control" type="date" id="licence_issue_date" name="license_issue_date"
+                    value="<?php echo $data['license_issue_date']; ?>" required />
+                    <p class="text text-danger"><?php echo $data_error['license_issue_date']; ?></p>
                 </div>
                          
                 <div class="shadow-lg p-3 mb-5 bg-white rounded">
                     <label class="left">Licence Valid upto (ஓட்டுனர் உரிமம் செல்லுபடி ஆகும் நாள்)</label>
-                    <input class="form-control" type="date" id="licence_expire_date" name="license_expire_date" required />
+                    <input class="form-control" type="date" id="licence_expire_date" name="license_expire_date"
+                    value="<?php echo $data['license_expire_date']; ?>" required />
+                    <p class="text text-danger"><?php echo $data_error['license_expire_date']; ?></p>
                 </div>
                 
                 <div class="shadow-lg p-3 mb-5 bg-white rounded">
                     <label class="left">PSV BADGE எண்</label>
-                    <input class="form-control" placeholder="Badge Number" type="text" id="badge_number" name="badge_number" required />
+                    <input class="form-control" placeholder="Badge Number" type="text" id="badge_number" name="badge_number"
+                    value="<?php echo $data['badge_number']; ?>" required />
+                    <p class="text text-danger"><?php echo $data_error['badge_number']; ?></p>
                 </div>
                                 
                 <div class="shadow-lg p-3 mb-5 bg-white rounded">
                     <label class="left">PSV BADGE எடுத்த நாள்</label>
-                    <input class="form-control" type="date" id="badge_issue_date" name="badge_issue_date" required />
+                    <input class="form-control" type="date" id="badge_issue_date" name="badge_issue_date"
+                    value="<?php echo $data['badge_issue_date']; ?>" required />
+                    <p class="text text-danger"><?php echo $data_error['badge_issue_date']; ?></p>
                 </div>
 
                 <div class="shadow-lg p-3 mb-5 bg-white rounded">
                     <label class="left">PSV Taken in the region of (PSV எடுக்கப்பட்ட இடம்)</label>
-                    <input class="form-control" placeholder="PSV region" type="text" id="psv_region" name="psv_region" required />
+                    <input class="form-control" placeholder="PSV region" type="text" id="psv_region" name="psv_region"
+                    value="<?php echo $data['psv_region']; ?>" required />
+                    <p class="text text-danger"><?php echo $data_error['psv_region']; ?></p>
                 </div>                
                                 
                 <div class="shadow-lg p-3 mb-5 bg-white rounded">
                     <label class="left">HPTV issue date</label>
-                    <input class="form-control" type="date" id="hptv_issue_date" name="hptv_issue_date" required />
+                    <input class="form-control" type="date" id="hptv_issue_date" name="hptv_issue_date"
+                    value="<?php echo $data['hptv_issue_date']; ?>" required />
+                    <p class="text text-danger"><?php echo $data_error['hptv_issue_date']; ?></p>
                 </div>
                 
                 <div class="shadow-lg p-3 mb-5 bg-white rounded">
@@ -448,7 +485,9 @@ if(isset($_POST['submit'])){
                         Bank Passbook details(வங்கி பாஸ்புக் விவரங்கள்)<br /> 
                         <small>1. Name of the Candidate 2. Account Number 3. Bank Name 4. Branch Name 5. IFSC Code</small> 
                     </label>
-                    <input class="form-control" type="text" id="passbook_details" name="passbook_details" required />
+                    <input class="form-control" type="text" id="passbook_details" name="passbook_details"
+                    value="<?php echo $data['passbook_details']; ?>" required />
+                    <p class="text text-danger"><?php echo $data_error['passbook_details']; ?></p>
                 </div>
                                 
                 <div class="shadow-lg p-3 mb-5 bg-white rounded">
@@ -497,6 +536,14 @@ if(isset($_POST['submit'])){
                     <label>Community Certificate</label>
                     <input type="file" id="community_certificate" name="community_certificate" class="form-control" required />
                     <p><?php echo $files_error["community_certificate"]; ?></p>
+                </div>
+
+                <div class="shadow-lg p-3 mb-5 bg-white rounded">
+                    <label>
+                        <input type="checkbox" name="physical_deficiency" value="NO" required />
+                         I declare that, I have no physical deficiencies and I have good vision (6/6)
+                        without using spectacles and free from color blindness and night blindness. 
+                    </label>
                 </div>
 
                 <div>
